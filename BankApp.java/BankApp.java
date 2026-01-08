@@ -2,11 +2,20 @@ import java.util.Scanner;
 
 public class BankApp {
     static double balance = 0;
+    static int pin = 1234;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int choice;
 
+        System.out.print("Enter PIN: ");
+        int enteredPin = sc.nextInt();
+
+        if (enteredPin != pin) {
+            System.out.println("Invalid PIN. Access denied.");
+            return;
+        }
+
+        int choice;
         do {
             System.out.println("\n--- Banking Application ---");
             System.out.println("1. Deposit");
@@ -20,8 +29,7 @@ public class BankApp {
             switch (choice) {
                 case 1:
                     System.out.print("Enter amount to deposit: ");
-                    double deposit = sc.nextDouble();
-                    balance += deposit;
+                    balance += sc.nextDouble();
                     System.out.println("Deposit successful");
                     break;
 
